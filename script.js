@@ -3,11 +3,37 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+
+  var noTypeChosen = true;
+  while (noTypeChosen)  {
+    var lowercaseAnswer = confirm("Would you like your password to include lowercase letters?");
+    var uppercaseAnswer = confirm("Would you like your password to include uppercase letters?");
+    var numericAnswer = confirm("Would you like your password to include numbers?");
+    var specialAnswer = confirm("Would you like your password to include special characters?");
+
+    if (lowercaseAnswer || uppercaseAnswer || numericAnswer || specialAnswer) {
+      var noTypeChosen = false
+    }
+    else {
+      alert("Please choose at at least one character type!")
+    }
+  }
+
+  var noLengthChosen = true;
+  while (noLengthChosen) {
+    length = prompt("How many characters would you like in your password?\n(Minimum: 8, Maximum:128)")
+    if (length > 7 && length < 129) {
+      var noLengthChosen = false;
+    }
+    else {
+      alert("Please choose a length in the specified range!")
+    }
+  }
+
+  var password = generatePassword(length, lowercaseAnswer, uppercaseAnswer, numericAnswer, specialAnswer);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // A toUpperCase function that can be used on arrays.
@@ -41,16 +67,16 @@ function generatePassword(length, useLowerCase, useUpperCase, useNumeric, useSpe
   var passwordCharSource = [];
 
   // These if statements will fill the passwordCharSource array with the user-specified charactersets.
-  if (useLowerCase === true) {
+  if (useLowerCase) {
     passwordCharSource = passwordCharSource.concat(alphabet);
   }
-  if (useUpperCase === true) {
+  if (useUpperCase) {
     passwordCharSource = passwordCharSource.concat(alphabet.map(toUpper));
   }
-  if (useNumeric === true) {
+  if (useNumeric) {
     passwordCharSource = passwordCharSource.concat(numList);
   }
-  if (useSpecial === true) {
+  if (useSpecial) {
     passwordCharSource = passwordCharSource.concat(specialCharList);
   }
 
