@@ -20,9 +20,11 @@ function writePassword() {
   }
 
   var noLengthChosen = true;
+  // The user will be promted for a password character length until valid input is given.
+  // Valid input meaning an integer greater than 7 and less than 129
   while (noLengthChosen) {
     length = prompt("How many characters would you like in your password?\n(Minimum: 8, Maximum:128)")
-    if (length > 7 && length < 129) {
+    if (length > 7 && length < 129 && Number.isInteger(+length)) {
       var noLengthChosen = false;
     }
     else {
@@ -41,6 +43,8 @@ toUpper = function(x){
   return x.toUpperCase();
 };
 
+var string = "&quot;"
+
 // Arrays for the possible characters to be used in a password are first made as string and then, using the split function, made into arrays.
 var alphabetSource = "abcdefghijklmnopqrstuvwxyz";
 var alphabet = alphabetSource.split("");
@@ -48,8 +52,7 @@ var alphabet = alphabetSource.split("");
 var numListSource = "0123456789";
 var numList = numListSource.split("");
 
-// The following characters are not included: " and \
-var specialCharListSource = " !#$%&'()*+,-/:;<=>?@[]^_`{|}~";
+var specialCharListSource = " !#$%&'()*+,-/:;<=>?@[]^_`{|}~\"\\";
 var specialCharList = specialCharListSource.split("");
 
 
