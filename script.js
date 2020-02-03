@@ -43,8 +43,6 @@ toUpper = function(x){
   return x.toUpperCase();
 };
 
-var string = "&quot;"
-
 // Arrays for the possible characters to be used in a password are first made as string and then, using the split function, made into arrays.
 var alphabetSource = "abcdefghijklmnopqrstuvwxyz";
 var alphabet = alphabetSource.split("");
@@ -54,7 +52,6 @@ var numList = numListSource.split("");
 
 var specialCharListSource = " !#$%&'()*+,-/:;<=>?@[]^_`{|}~\"\\";
 var specialCharList = specialCharListSource.split("");
-
 
 // Generates a password with the following properties:
 //  - a specified length between 8 and 128 characters inclusively
@@ -83,16 +80,14 @@ function generatePassword(length, useLowerCase, useUpperCase, useNumeric, useSpe
     passwordCharSource = passwordCharSource.concat(specialCharList);
   }
 
+  // This loop "randomly" pulls characters from the passwordCharSource array and pushes them into a password array 
   for (var i = 0; i < length; i++) {
-
     password.push(passwordCharSource[Math.floor(Math.random() * passwordCharSource.length)]);
-
   }
 
+  // Finally the password array is converted into a string and passed to writePassword for printing.
   return password.join("");
 }
-
-console.log(generatePassword(20, true, true, true, true))
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
