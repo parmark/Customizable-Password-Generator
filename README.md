@@ -8,3 +8,6 @@ Upon clicking the generate button a series of questions will be prompted to the 
 
 ## Screenshot
 ![alt text](https://raw.githubusercontent.com/parmark/Customizable-Password-Generator/master/password-generator-example.PNG "")
+
+## Link
+[https://parmark.github.io/Customizable-Password-Generator/](https://parmark.github.io/Customizable-Password-Generator/)
